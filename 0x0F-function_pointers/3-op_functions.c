@@ -1,18 +1,67 @@
 #include "3-calc.h"
-#include <stdlib.h>
+
+int op_add(int a, int b);
+int op_sub(int a, int b);
+int op_mul(int a, int b);
+int op_div(int a, int b);
+int op_mod(int a, int b);
 
 /**
- * get_op_func - to pick the correct function to undergo the operation asked by a user.
- * @s: operator passed as argument.
- * Return: pointer to the function in line with the operator given as a parameter.
+ * op_add - we return the sum of two digits here.
+ * @a: first digit.
+ * @b: second digit.
+ * Return: Must be sum of a and b.
  */
 
-int (*get_op_func(char *s))(int, int)
+int op_add(int a, int b)
 {
-op_t ops[] = {{"+", op_add}, {"-", op_sub}, {"*", op_mul}, {"/", op_div}, {"%", op_mod}, {NULL, NULL}};
+return (a + b);
+}
 
-int i = 0;
-while (ops[i].op != NULL && *(ops[i].op) != *s)
-i++;
-return (ops[i].f);
+/**
+ * op_sub - we return the difference of two digit.
+ * @a: first digit.
+ * @b: second digit.
+ * Return: Must be difference of a and b.
+ */
+
+int op_sub(int a, int b)
+{
+return (a - b);
+}
+
+/**
+ * op_mul - to return the product of two digit.
+ * @a: first digit.
+ * @b: second digit.
+ * Return: product of a and b.
+ */
+
+int op_mul(int a, int b)
+{
+return (a * b);
+}
+
+/**
+ * op_div - to return the division of two digits.
+ * @a: first digit.
+ * @b: second digit.
+ * Return: div of a and b.
+ */
+
+int op_div(int a, int b)
+{
+return (a / b);
+}
+
+/**
+ * op_mod - to return the remainder of the division of two digits.
+ * @a: The first digit.
+ * @b: The second digit.
+ * Return: The result of the division of a by b.
+ */
+
+int op_mod(int a, int b)
+{
+return (a % b);
 }

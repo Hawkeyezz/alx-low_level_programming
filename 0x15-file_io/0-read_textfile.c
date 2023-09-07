@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * read_textfile- Reading the text file print, to the STDOUT.
@@ -20,7 +20,7 @@ return (0);
 buff = malloc(sizeof(char) * letters);
 t = read(fd, buff, letters);
 w = write(STDOUT_FILENO, buff, t);
-free(buff);
-close(fd);
+free (buff);
+close (fd);
 return (w);
 }

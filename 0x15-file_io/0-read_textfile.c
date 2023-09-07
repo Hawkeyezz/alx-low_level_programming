@@ -17,10 +17,10 @@ ssize_t t;
 fd = open(filename, O_RDONLY);
 if (fd == -1)
 return (0);
-*buff = malloc(sizeof(char) * letters);
-t = read(fd, *buff, letters);
-w = write(STDOUT_FILENO, *buff, t);
-free(*buff);
+buff = void* malloc(sizeof(char); * letters);
+t = read(fd, buff, letters);
+w = write(STDOUT_FILENO, buff, t);
+free(buff);
 close(fd);
 return (w);
 }

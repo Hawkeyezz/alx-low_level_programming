@@ -10,31 +10,31 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-char *buffer;
-int file_descriptor = -1;
-ssize_t output = 0;
 
-if (!filename)
-return (0);
-file_descriptor = open(filename, 0_RDONLY);
-if (file_descriptor < 0)
-return (0);
-buffer = malloc(sizeof(char) * letters);
-if (!buffer)
-{
-close(file_descriptor);
-return (0);
+        char *buf;
+
+        ssize_t fd;
+
+        ssize_t w;
+
+        ssize_t t;
+
+        fd = open(filename, O_RDONLY);
+
+        if (fd == -1)
+
+                return (0);
+
+        buf = malloc(sizeof(char) * letters);
+
+        t = read(fd, buf, letters);
+
+        w = write(STDOUT_FILENO, buf, t);
+
+        free(buf);
+
+        close(fd);
+
+        return (w);
+
 }
-output = read(file_descriptor, buffer, letters);
-if (output < 0)
-{
-free(buffer);
-close(file_descriptor);
-return (0);
-}
-output = write(STDOUT_FILENO, buffer, output);
-free(buffer);
-close(file_descriptor);
-if (output < 0)
-return (0);
-return (output);
